@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DbFirstProj.Services.BusinessLogic
 {
-    public class RelationService : IRelationService
+    public class RelationService : IGenericService<Relation>
     {
         private RelationRepository repository;
 
@@ -14,10 +14,12 @@ namespace DbFirstProj.Services.BusinessLogic
             repository = new RelationRepository();
         }
 
-        public void Create(TblRelation relation)
+        public void Create(Relation relation)
         {
             if (relation == null)
+            {
                 throw new ArgumentNullException(nameof(relation), "Parameter is null.");
+            }
 
             repository.Create(relation);
         }
@@ -25,26 +27,35 @@ namespace DbFirstProj.Services.BusinessLogic
         public void Delete(int id)
         {
             if (id >= 0)
+            {
                 throw new ArgumentException(nameof(id), "Parameter must be greater than zero.");
+            }
 
             repository.Delete(id);
         }
 
-        public TblRelation Get(int id)
+        public Relation Get(int id)
         {
             if (id >= 0)
+            {
                 throw new ArgumentException(nameof(id), "Parameter must be greater than zero.");
+            }
 
             return repository.Get(id);
         }
 
-        public IEnumerable<TblRelation> GetAll()
+        public IEnumerable<Relation> GetAll()
         {
             return repository.GetAll();
         }
 
-        public void Update(TblRelation relation)
+        public void Update(Relation relation)
         {
+            if (relation == null)
+            {
+                throw new ArgumentNullException(nameof(relation), "Parameter is null.");
+            }
+
             repository.Update(relation);
         }
     }

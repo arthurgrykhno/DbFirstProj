@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DbFirstProj.Entities
 {
-    public partial class TblRelationAddress
+    [Table("tblRelationAddress")]
+    public partial class RelationAddress
     {
         public Guid RelationId { get; set; }
         public Guid AddressTypeId { get; set; }

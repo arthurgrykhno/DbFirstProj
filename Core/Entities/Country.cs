@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DbFirstProj.Entities
 {
-    public partial class TblCountry
+    [Table("tblCountry")]
+    public partial class Country
     {
         public Guid Id { get; set; }
         public DateTime CreatedAt { get; set; }
