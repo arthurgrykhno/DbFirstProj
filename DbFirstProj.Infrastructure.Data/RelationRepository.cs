@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DbFirstProj.Infrastructure.Data
 {
-    public class RelationRepository : IRelationRepository
+    public class RelationRepository : IGenericRepository<Relation>
     {
         private testContext context;
 
@@ -17,7 +17,7 @@ namespace DbFirstProj.Infrastructure.Data
             context = new testContext();
         }
 
-        public void Create(TblRelation relation)
+        public void Create(Relation relation)
         {
             context.Add(relation);
 
@@ -26,25 +26,27 @@ namespace DbFirstProj.Infrastructure.Data
 
         public void Delete(int id)
         {
-            TblRelation relation = context.TblRelation.Find(id);
+            var relation = context.TblRelation.Find(id);
 
             if (relation != null)
+            {
                 context.TblRelation.Remove(relation);
+            }
 
             context.SaveChanges();
         }
 
-        public IEnumerable<TblRelation> GetAll()
+        public IEnumerable<Relation> GetAll()
         {
             return context.TblRelation.ToList();
         }
 
-        public TblRelation Get(int id)
+        public Relation Get(int id)
         {
             return context.TblRelation.Find(id);
         }
 
-        public void Update(TblRelation relation)
+        public void Update(Relation relation)
         {
             context.Entry(relation).State = EntityState.Modified;
         }

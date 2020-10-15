@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace DbFirstProj.Infrastructure.Data
 {
-    public class RelationAddressRepository : IRelationAddressRepository
+    public class RelationAddressRepository : IGenericRepository<RelationAddress>
     {
         private testContext context;
 
@@ -15,7 +15,7 @@ namespace DbFirstProj.Infrastructure.Data
             context = new testContext();
         }
 
-        public void Create(TblRelationAddress relation)
+        public void Create(RelationAddress relation)
         {
             context.Add(relation);
 
@@ -24,25 +24,27 @@ namespace DbFirstProj.Infrastructure.Data
 
         public void Delete(int id)
         {
-            TblRelationAddress relation = context.TblRelationAddress.Find(id);
+            var relation = context.TblRelationAddress.Find(id);
 
             if (relation != null)
+            {
                 context.TblRelationAddress.Remove(relation);
+            }
 
             context.SaveChanges();
         }
 
-        public IEnumerable<TblRelationAddress> GetAll()
+        public IEnumerable<RelationAddress> GetAll()
         {
             return context.TblRelationAddress.ToList();
         }
 
-        public TblRelationAddress Get(int id)
+        public RelationAddress Get(int id)
         {
             return context.TblRelationAddress.Find(id);
         }
 
-        public void Update(TblRelationAddress relation)
+        public void Update(RelationAddress relation)
         {
             context.Entry(relation).State = EntityState.Modified;
         }

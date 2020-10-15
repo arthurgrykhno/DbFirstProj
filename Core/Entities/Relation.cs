@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DbFirstProj.Entities
 {
-    public partial class TblRelation
+    [Table("tblRelation")]
+    public partial class Relation
     {
         public Guid Id { get; set; }
         public DateTime CreatedAt { get; set; }

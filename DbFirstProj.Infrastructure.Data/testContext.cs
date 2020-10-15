@@ -15,25 +15,24 @@ namespace DbFirstProj.Entities
         {
         }
 
-        public virtual DbSet<TblAddressType> TblAddressType { get; set; }
-        public virtual DbSet<TblCategory> TblCategory { get; set; }
-        public virtual DbSet<TblCountry> TblCountry { get; set; }
-        public virtual DbSet<TblRelation> TblRelation { get; set; }
-        public virtual DbSet<TblRelationAddress> TblRelationAddress { get; set; }
-        public virtual DbSet<TblRelationCategory> TblRelationCategory { get; set; }
+        public virtual DbSet<AddressType> TblAddressType { get; set; }
+        public virtual DbSet<Category> TblCategory { get; set; }
+        public virtual DbSet<Country> TblCountry { get; set; }
+        public virtual DbSet<Relation> TblRelation { get; set; }
+        public virtual DbSet<RelationAddress> TblRelationAddress { get; set; }
+        public virtual DbSet<RelationCategory> TblRelationCategory { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=test;Integrated Security=True");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TblAddressType>(entity =>
+            modelBuilder.Entity<AddressType>(entity =>
             {
                 entity.HasNoKey();
 
@@ -94,7 +93,7 @@ namespace DbFirstProj.Entities
                 entity.Property(e => e.Timestamp4).HasColumnType("datetime");
             });
 
-            modelBuilder.Entity<TblCategory>(entity =>
+            modelBuilder.Entity<Category>(entity =>
             {
                 entity.HasNoKey();
 
@@ -155,7 +154,7 @@ namespace DbFirstProj.Entities
                 entity.Property(e => e.Timestamp4).HasColumnType("datetime");
             });
 
-            modelBuilder.Entity<TblCountry>(entity =>
+            modelBuilder.Entity<Country>(entity =>
             {
                 entity.HasNoKey();
 
@@ -198,7 +197,7 @@ namespace DbFirstProj.Entities
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<TblRelation>(entity =>
+            modelBuilder.Entity<Relation>(entity =>
             {
                 entity.HasNoKey();
 
@@ -370,7 +369,7 @@ namespace DbFirstProj.Entities
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<TblRelationAddress>(entity =>
+            modelBuilder.Entity<RelationAddress>(entity =>
             {
                 entity.HasNoKey();
 
@@ -405,7 +404,7 @@ namespace DbFirstProj.Entities
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<TblRelationCategory>(entity =>
+            modelBuilder.Entity<RelationCategory>(entity =>
             {
                 entity.HasNoKey();
 

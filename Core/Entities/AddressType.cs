@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DbFirstProj.Entities
 {
-    public partial class TblAddressType
+    [Table("tblAddressType")]
+    public partial class AddressType
     {
         public Guid Id { get; set; }
         public DateTime CreatedAt { get; set; }
