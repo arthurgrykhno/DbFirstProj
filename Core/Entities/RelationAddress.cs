@@ -7,7 +7,7 @@ namespace DbFirstProj.Entities
     [Table("tblRelationAddress")]
     public partial class RelationAddress
     {
-        public Guid RelationId { get; set; }
+        public Guid Id { get; set; }
         public Guid AddressTypeId { get; set; }
         public string Street { get; set; }
         public int? Number { get; set; }

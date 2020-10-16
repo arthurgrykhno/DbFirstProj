@@ -10,27 +10,27 @@ namespace DbFirstProj.Infrastructure.Data
 {
     public class RelationRepository : IGenericRepository<Relation>
     {
-        private testContext context;
+        private ApplicationDbContext context;
 
         public RelationRepository()
         {
-            context = new testContext();
+            context = new ApplicationDbContext();
         }
 
         public void Create(Relation relation)
         {
-            context.Add(relation);
+            context.Relation.Add(relation);
 
             context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            var relation = context.TblRelation.Find(id);
+            var relation = context.Relation.Find(id);
 
             if (relation != null)
             {
-                context.TblRelation.Remove(relation);
+                context.Relation.Remove(relation);
             }
 
             context.SaveChanges();
@@ -38,12 +38,12 @@ namespace DbFirstProj.Infrastructure.Data
 
         public IEnumerable<Relation> GetAll()
         {
-            return context.TblRelation.ToList();
+            return context.Relation.ToList();
         }
 
         public Relation Get(int id)
         {
-            return context.TblRelation.Find(id);
+            return context.Relation.Find(id);
         }
 
         public void Update(Relation relation)

@@ -4,23 +4,23 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DbFirstProj.Entities
 {
-    public partial class testContext : DbContext
+    public partial class ApplicationDbContext : DbContext
     {
-        public testContext()
+        public ApplicationDbContext()
         {
         }
 
-        public testContext(DbContextOptions<testContext> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<AddressType> TblAddressType { get; set; }
-        public virtual DbSet<Category> TblCategory { get; set; }
-        public virtual DbSet<Country> TblCountry { get; set; }
-        public virtual DbSet<Relation> TblRelation { get; set; }
-        public virtual DbSet<RelationAddress> TblRelationAddress { get; set; }
-        public virtual DbSet<RelationCategory> TblRelationCategory { get; set; }
+        public virtual DbSet<AddressType> AddressType { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Country> Country { get; set; }
+        public virtual DbSet<Relation> Relation { get; set; }
+        public virtual DbSet<RelationAddress> RelationAddress { get; set; }
+        public virtual DbSet<RelationCategory> RelationCategory { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,10 +31,10 @@ namespace DbFirstProj.Entities
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        { 
             modelBuilder.Entity<AddressType>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Id);
 
                 entity.ToTable("tblAddressType");
 
@@ -95,7 +95,7 @@ namespace DbFirstProj.Entities
 
             modelBuilder.Entity<Category>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Id);
 
                 entity.ToTable("tblCategory");
 
@@ -156,7 +156,7 @@ namespace DbFirstProj.Entities
 
             modelBuilder.Entity<Country>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Id);
 
                 entity.ToTable("tblCountry");
 
@@ -199,7 +199,7 @@ namespace DbFirstProj.Entities
 
             modelBuilder.Entity<Relation>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Id);
 
                 entity.ToTable("tblRelation");
 
@@ -371,7 +371,7 @@ namespace DbFirstProj.Entities
 
             modelBuilder.Entity<RelationAddress>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Id);
 
                 entity.ToTable("tblRelationAddress");
 

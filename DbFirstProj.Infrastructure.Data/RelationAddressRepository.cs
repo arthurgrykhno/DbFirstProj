@@ -8,27 +8,27 @@ namespace DbFirstProj.Infrastructure.Data
 {
     public class RelationAddressRepository : IGenericRepository<RelationAddress>
     {
-        private testContext context;
+        private ApplicationDbContext context;
 
         public RelationAddressRepository()
         {
-            context = new testContext();
+            context = new ApplicationDbContext();
         }
 
         public void Create(RelationAddress relation)
         {
-            context.Add(relation);
+            context.RelationAddress.Add(relation);
 
             context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            var relation = context.TblRelationAddress.Find(id);
+            var relation = context.RelationAddress.Find(id);
 
             if (relation != null)
             {
-                context.TblRelationAddress.Remove(relation);
+                context.RelationAddress.Remove(relation);
             }
 
             context.SaveChanges();
@@ -36,12 +36,12 @@ namespace DbFirstProj.Infrastructure.Data
 
         public IEnumerable<RelationAddress> GetAll()
         {
-            return context.TblRelationAddress.ToList();
+            return context.RelationAddress.ToList();
         }
 
         public RelationAddress Get(int id)
         {
-            return context.TblRelationAddress.Find(id);
+            return context.RelationAddress.Find(id);
         }
 
         public void Update(RelationAddress relation)

@@ -7,6 +7,15 @@ namespace DbFirstProj.Entities
     [Table("tblCountry")]
     public partial class Country
     {
+        public Country()
+        {
+            CreatedAt = DateTime.Now;
+            CreatedBy = "AG";
+            IsDisabled = false;
+            IsDefault = false;
+            Name = "AG";
+        }
+
         public Guid Id { get; set; }
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
