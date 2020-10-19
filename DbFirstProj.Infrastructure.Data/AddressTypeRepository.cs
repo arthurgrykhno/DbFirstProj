@@ -24,11 +24,11 @@ namespace DbFirstProj.Infrastructure.Data
             context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             var addressType = context.AddressType.Find(id);
 
-            if (addressType != null)
+            if (id != null)
             {
                 context.AddressType.Remove(addressType);
             }
@@ -36,7 +36,7 @@ namespace DbFirstProj.Infrastructure.Data
             context.SaveChanges();
         }
 
-        public AddressType Get(int id)
+        public AddressType Get(Guid id)
         {
             return context.AddressType.Find(id);
         }

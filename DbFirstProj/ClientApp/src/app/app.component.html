@@ -1,6 +1,41 @@
-<body>
-  <app-nav-menu></app-nav-menu>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
-</body>
+<table class="table-dark">
+  <tr>
+    <th hidden>Id</th>
+    <th>Name</th>
+    <th>FullName</th>
+    <th>TelephoneNumber</th>
+    <th>Email</th>
+    <th>Country</th>
+    <th>City</th>
+    <th>Street</th>
+    <th>PostalCode</th>
+    <th>StreetNumber</th>
+  </tr>
+  <tr *ngFor="let r of relations">
+    <td hidden>{{r?.id}}</td>
+    <td *ngIf="!r.isDisabled">{{r?.name}}</td>
+    <td *ngIf="!r.isDisabled">{{r?.fullName}}</td>
+    <td *ngIf="!r.isDisabled">{{r?.telephoneNumber}}</td>
+    <td *ngIf="!r.isDisabled">{{r?.eMailAddress}}</td>
+    <td *ngIf="!r.isDisabled">{{r?.countryName}}</td>
+    <td *ngIf="!r.isDisabled">{{r?.city}}</td>
+    <td *ngIf="!r.isDisabled">{{r?.street}}</td>
+    <td *ngIf="!r.isDisabled">{{r?.postalCode}}</td>
+    <td *ngIf="!r.isDisabled">{{r?.number}}</td>
+    <td *ngIf="!r.isDisabled"><button (click)="get(r)">Edit</button></td>
+    <td *ngIf="!r.isDisabled"><button (click)="delete(r)">Delete</button></td>
+
+
+    <!--<td>1</td>
+  <td>Artur</td>
+  <td>Artur Grihno</td>
+  <td>0633412822</td>
+  <td>arturgrihno@gmail.com</td>
+  <td>Ukraine</td>
+  <td>Odessa</td>
+  <td>Luzanovka</td>
+  <td>65102</td>
+  <td>305</td>
+  <td><button>Delete</button></td>-->
+  </tr>
+</table>

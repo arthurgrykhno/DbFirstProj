@@ -26,6 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\data\data.relation.ts" />
+    <None Remove="ClientApp\src\app\data\data.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
@@ -34,6 +39,11 @@
     <ProjectReference Include="..\DbFirstProj.Domain.Interfaces\DbFirstProj.Domain.Interfaces.csproj" />
     <ProjectReference Include="..\DbFirstProj.Infrastructure.Data\DbFirstProj.Infrastructure.Data.csproj" />
     <ProjectReference Include="..\DbFirstProj.Services.BusinessLogic\DbFirstProj.Services.BusinessLogic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\data\data.relation.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\data\data.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

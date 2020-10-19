@@ -30,9 +30,9 @@ namespace DbFirstProj.Services.BusinessLogic
             relationRepository.Create(relation);
         }
 
-        public void DeleteRelation(int id)
+        public void DeleteRelation(Guid id)
         {
-            if (id <= 0)
+            if (id == null)
             {
                 throw new ArgumentException(nameof(id), "Parameter must be greater than zero.");
             }
@@ -40,9 +40,9 @@ namespace DbFirstProj.Services.BusinessLogic
             relationRepository.Delete(id);
         }
 
-        public Relation GetRelation(int id)
+        public Relation GetRelation(Guid id)
         {
-            if (id <= 0)
+            if (id == null)
             {
                 throw new ArgumentException(nameof(id), "Parameter must be greater than zero.");
             }
@@ -75,9 +75,9 @@ namespace DbFirstProj.Services.BusinessLogic
             addressRepository.Create(relationAddress);
         }
 
-        public void DeleteAddress(int id)
+        public void DeleteAddress(Guid id)
         {
-            if (id <= 0)
+            if (id == null)
             {
                 throw new ArgumentException(nameof(id), "Parameter must be greater than zero.");
             }
@@ -85,9 +85,9 @@ namespace DbFirstProj.Services.BusinessLogic
             relationRepository.Delete(id);
         }
 
-        public RelationAddress GetAddress(int id)
+        public RelationAddress GetAddress(Guid id)
         {
-            if (id <= 0)
+            if (id == null)
             {
                 throw new ArgumentException(nameof(id), "Parameter must be greater than zero.");
             }

@@ -1,4 +1,5 @@
 ﻿using DbFirstProj.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace DbFirstProj.Domain.Interfaces.Repositories
@@ -7,11 +8,11 @@ namespace DbFirstProj.Domain.Interfaces.Repositories
     {
         IEnumerable<TEntity> GetAll();
 
-        TEntity Get(int id);
+        TEntity Get(Guid id);
 
         void Create(TEntity relation);
 
-        void Delete(int id);
+        void Delete(Guid id);
 
         void Update(TEntity relation);
     }

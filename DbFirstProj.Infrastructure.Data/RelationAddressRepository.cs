@@ -1,6 +1,7 @@
 ﻿using DbFirstProj.Domain.Interfaces.Repositories;
 using DbFirstProj.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,11 +23,11 @@ namespace DbFirstProj.Infrastructure.Data
             context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             var relation = context.RelationAddress.Find(id);
 
-            if (relation != null)
+            if (id != null)
             {
                 context.RelationAddress.Remove(relation);
             }
@@ -39,7 +40,7 @@ namespace DbFirstProj.Infrastructure.Data
             return context.RelationAddress.ToList();
         }
 
-        public RelationAddress Get(int id)
+        public RelationAddress Get(Guid id)
         {
             return context.RelationAddress.Find(id);
         }

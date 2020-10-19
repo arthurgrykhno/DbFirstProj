@@ -24,13 +24,13 @@ namespace DbFirstProj.Infrastructure.Data
             context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             var relation = context.Relation.Find(id);
 
-            if (relation != null)
+            if (id != null)
             {
-                context.Relation.Remove(relation);
+                relation.IsDisabled = true;
             }
 
             context.SaveChanges();
@@ -41,7 +41,7 @@ namespace DbFirstProj.Infrastructure.Data
             return context.Relation.ToList();
         }
 
-        public Relation Get(int id)
+        public Relation Get(Guid id)
         {
             return context.Relation.Find(id);
         }

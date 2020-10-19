@@ -1,6 +1,7 @@
 ﻿using DbFirstProj.Domain.Interfaces.Repositories;
 using DbFirstProj.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,11 +23,11 @@ namespace DbFirstProj.Infrastructure.Data
             context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             var country = context.Country.Find(id);
 
-            if (country != null)
+            if (id != null)
             {
                 context.Country.Remove(country);
             }
@@ -34,7 +35,7 @@ namespace DbFirstProj.Infrastructure.Data
             context.SaveChanges();
         }
 
-        public Country Get(int id)
+        public Country Get(Guid id)
         {
             return context.Country.Find(id);
         }

@@ -94,5 +94,36 @@ namespace DbFirstProj.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteRelation(string id)
+        {
+            try
+            {
+                var guidId = Guid.Parse(id);
+                _relationService.DeleteRelation(guidId);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetRelation(string id)
+        {
+            try
+            {
+                var guidId = Guid.Parse(id);
+                var relation = _relationService.GetRelation(guidId);
+
+                return Ok(_mapper.Map<RelationViewModel>(relation));
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
     }
 }

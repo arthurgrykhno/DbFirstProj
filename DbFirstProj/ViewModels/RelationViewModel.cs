@@ -4,6 +4,10 @@ namespace DbFirstProj.ViewModels
 {
     public class RelationViewModel
     {
+        public Guid Id { get; set; }
+
+        public bool IsDisabled { get; set; }
+
         public string Name { get; set; }
 
         public string FullName { get; set; }

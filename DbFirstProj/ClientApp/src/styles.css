@@ -1,16 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+.container {
+  padding-top: 50px;
+  width: 80%;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
 }
 
-code {
-  color: #e01a76;
+.container table {
+  margin: 0 auto;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+td, th {
+    padding: 5px;
+    text-align: center;
+}
+
+button {
+  font-size: 18px;
+  background-color: #252F48;
+  color: #EDB749;
+}
+
+
+
+.table-dark {
+  border-collapse: collapse;
+  background: #252F48;
+}
+
+.table-dark th {
+  color: #EDB749;
+  border-bottom: 1px solid #37B5A5;
+}
+
+.table-dark td {
+  color: #CAD4D6;
+  border-bottom: 1px solid #37B5A5;
+  border-right: 1px solid #37B5A5;
+}
+
+.table_dark tr:last-child td {
+  border-bottom: none;
+}
+
+.table_dark td:last-child {
+  border-right: none;
+}
+
+.table_dark tr:hover td {
+  text-decoration: underline;
 }
