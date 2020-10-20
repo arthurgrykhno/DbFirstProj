@@ -8,6 +8,8 @@ namespace DbFirstProj.Entities
     public partial class RelationAddress
     {
         public Guid Id { get; set; }
+        public Guid RelationId { get; set; }
+        public Relation Relation { get; set; }
         public Guid AddressTypeId { get; set; }
         public string Street { get; set; }
         public int? Number { get; set; }

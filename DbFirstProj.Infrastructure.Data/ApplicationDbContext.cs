@@ -201,6 +201,8 @@ namespace DbFirstProj.Entities
             {
                 entity.HasKey(e => e.Id);
 
+                entity.HasMany(e => e.RelationAddresses).WithOne();
+
                 entity.ToTable("tblRelation");
 
                 entity.Property(e => e.ArrivalBetween).HasColumnType("datetime");
@@ -372,6 +374,8 @@ namespace DbFirstProj.Entities
             modelBuilder.Entity<RelationAddress>(entity =>
             {
                 entity.HasKey(e => e.Id);
+
+                entity.HasOne(e => e.Relation).WithMany().HasForeignKey(e => e.RelationId);
 
                 entity.ToTable("tblRelationAddress");
 

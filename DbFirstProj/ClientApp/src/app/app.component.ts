@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data/data.service';
 import { Relation } from './data/data.relation';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   relations: Relation[];
   tablemode: boolean = true;
 
+  getRel: Relation;
 
   constructor(private dataService: DataService) { }
 
@@ -25,10 +27,8 @@ export class AppComponent implements OnInit {
     this.dataService.deleteRelation(r.id).subscribe(data => this.getAll());
   }
 
-  get(r: Relation) {
-    var b = this.dataService.getRelation(r.id);
-    console.log(b);
-    
+  edit(r: Relation) {
+    this.relation = r;
   }
 
   ngOnInit() {

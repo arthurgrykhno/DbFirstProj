@@ -20,6 +20,7 @@ namespace DbFirstProj.Entities
         }
 
         public Guid Id { get; set; }
+        public List<RelationAddress> RelationAddresses { get; set; }
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? ModifiedAt { get; set; }

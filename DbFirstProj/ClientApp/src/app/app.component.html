@@ -22,20 +22,7 @@
     <td *ngIf="!r.isDisabled">{{r?.street}}</td>
     <td *ngIf="!r.isDisabled">{{r?.postalCode}}</td>
     <td *ngIf="!r.isDisabled">{{r?.number}}</td>
-    <td *ngIf="!r.isDisabled"><button (click)="get(r)">Edit</button></td>
+    <td *ngIf="!r.isDisabled"><button (click)="edit(r)">Edit</button></td>
     <td *ngIf="!r.isDisabled"><button (click)="delete(r)">Delete</button></td>
-
-
-    <!--<td>1</td>
-  <td>Artur</td>
-  <td>Artur Grihno</td>
-  <td>0633412822</td>
-  <td>arturgrihno@gmail.com</td>
-  <td>Ukraine</td>
-  <td>Odessa</td>
-  <td>Luzanovka</td>
-  <td>65102</td>
-  <td>305</td>
-  <td><button>Delete</button></td>-->
   </tr>
 </table>

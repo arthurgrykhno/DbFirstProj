@@ -1,4 +1,3 @@
-import { from } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Relation } from './data.relation';
@@ -18,9 +17,4 @@ export class DataService {
     return this.http.delete(this.url + '/' + r);
   }
 
-  getRelation(r: string) {
-    return this.http.get(this.url + '/' + r);
-  }
-
-  
 }

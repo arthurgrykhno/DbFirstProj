@@ -38,7 +38,7 @@ namespace DbFirstProj.Infrastructure.Data
 
         public IEnumerable<Relation> GetAll()
         {
-            return context.Relation.ToList();
+            return context.Relation.Include(e => e.RelationAddresses).ToList();
         }
 
         public Relation Get(Guid id)
