@@ -17,4 +17,8 @@ export class DataService {
     return this.http.delete(this.url + '/' + r);
   }
 
+  editRelation(r: Relation) {
+    return this.http.put(this.url, r);
+  }
+
 }

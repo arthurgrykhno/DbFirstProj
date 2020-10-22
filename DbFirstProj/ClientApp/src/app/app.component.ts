@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data/data.service';
 import { Relation } from './data/data.relation';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PopupComponent } from './popup/popup.component';
+
 
 @Component({
   selector: 'app-root',
@@ -16,7 +18,7 @@ export class AppComponent implements OnInit {
 
   getRel: Relation;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, public dialog: MatDialog) { }
 
   getAll() {
     this.dataService.getRelations().subscribe((data: Relation[]) => this.relations = data);
@@ -24,12 +26,20 @@ export class AppComponent implements OnInit {
   }
 
   delete(r: Relation) {
-    this.dataService.deleteRelation(r.id).subscribe(data => this.getAll());
+    this.dataService.deleteRelation(r.relationId).subscribe(data => this.getAll());
+  }
+
+  onEdit(r: Relation) {
+    this.relation = r;
+    this.dialog.open(PopupComponent,{
+      data: this.relation
+    });
   }
 
   edit(r: Relation) {
-    this.relation = r;
+    this.dataService.editRelation(r);
   }
+  
 
   ngOnInit() {
     this.getAll();

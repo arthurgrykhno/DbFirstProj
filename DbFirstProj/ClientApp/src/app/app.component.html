@@ -12,7 +12,8 @@
     <th>StreetNumber</th>
   </tr>
   <tr *ngFor="let r of relations">
-    <td hidden>{{r?.id}}</td>
+    <td hidden>{{r?.relationId}}</td>
+    <td hidden>{{r?.relationAddressId}}</td>
     <td *ngIf="!r.isDisabled">{{r?.name}}</td>
     <td *ngIf="!r.isDisabled">{{r?.fullName}}</td>
     <td *ngIf="!r.isDisabled">{{r?.telephoneNumber}}</td>
@@ -22,7 +23,7 @@
     <td *ngIf="!r.isDisabled">{{r?.street}}</td>
     <td *ngIf="!r.isDisabled">{{r?.postalCode}}</td>
     <td *ngIf="!r.isDisabled">{{r?.number}}</td>
-    <td *ngIf="!r.isDisabled"><button (click)="edit(r)">Edit</button></td>
+    <td *ngIf="!r.isDisabled"><button (click)="onEdit(r)">Edit</button></td>
     <td *ngIf="!r.isDisabled"><button (click)="delete(r)">Delete</button></td>
   </tr>
 </table>

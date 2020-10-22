@@ -19,6 +19,7 @@ namespace DbFirstProj.Entities
         public string Building { get; set; }
         public string PostalCode { get; set; }
         public Guid? CountryId { get; set; }
+        public Country Country { get; set; }
         public string CountryName { get; set; }
         public double? Longitude { get; set; }
         public double? Latitude { get; set; }

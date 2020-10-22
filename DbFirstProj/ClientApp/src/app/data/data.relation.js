@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Relation = /** @class */ (function () {
-    function Relation(id, isDisabled, name, fullName, telephoneNumber, eMailAddress, countryName, city, street, postalCode, number) {
-        this.id = id;
+    function Relation(relationId, relationAddressId, isDisabled, name, fullName, telephoneNumber, eMailAddress, countryName, city, street, postalCode, number) {
+        this.relationId = relationId;
+        this.relationAddressId = relationAddressId;
         this.isDisabled = isDisabled;
         this.name = name;
         this.fullName = fullName;

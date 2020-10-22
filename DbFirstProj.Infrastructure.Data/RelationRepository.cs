@@ -27,18 +27,15 @@ namespace DbFirstProj.Infrastructure.Data
         public void Delete(Guid id)
         {
             var relation = context.Relation.Find(id);
-
-            if (id != null)
-            {
-                relation.IsDisabled = true;
-            }
+            relation.IsDisabled = true;
 
             context.SaveChanges();
         }
 
         public IEnumerable<Relation> GetAll()
         {
-            return context.Relation.Include(e => e.RelationAddresses).ToList();
+            var a = context.Relation.Include(r => r.RelationAddresses).ThenInclude(e => e.Country).ToList();
+            return a;
         }
 
         public Relation Get(Guid id)
@@ -48,7 +45,8 @@ namespace DbFirstProj.Infrastructure.Data
 
         public void Update(Relation relation)
         {
-            context.Entry(relation).State = EntityState.Modified;
+            context.Relation.Update(relation);
+            context.SaveChanges();
         }
     }
 }

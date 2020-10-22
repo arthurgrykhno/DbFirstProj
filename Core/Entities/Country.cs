@@ -29,5 +29,6 @@ namespace DbFirstProj.Entities
         public string Iso31663 { get; set; }
         public Guid? DefaultVatId { get; set; }
         public string PostalCodeFormat { get; set; }
+        public List<RelationAddress> RelationAddresses { get; set; }
     }
 }

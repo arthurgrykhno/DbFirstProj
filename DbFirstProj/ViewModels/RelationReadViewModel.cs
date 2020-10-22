@@ -1,10 +1,14 @@
-﻿using System;
+﻿using DbFirstProj.Entities;
+using System;
+using System.Collections.Generic;
 
 namespace DbFirstProj.ViewModels
 {
-    public class RelationViewModel
+    public class RelationReadViewModel
     {
-        public Guid Id { get; set; }
+        public Guid RelationId { get; set; }
+
+        public Guid RelationAddressId { get; set; }
 
         public bool IsDisabled { get; set; }
 

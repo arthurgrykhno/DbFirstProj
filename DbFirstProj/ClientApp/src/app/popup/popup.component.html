@@ -1,0 +1,34 @@
+<div class="container" >
+  <div class="popup">
+      <label>Name</label>
+      <input type="text" name="name"  [(ngModel)]="relation.name">
+
+      <label>Full Name</label>
+      <input type="text" name="fullName" [(ngModel)]="relation.fullName">
+
+      <label>Telephone Number</label>
+      <input type="text" name="telephoneNumber" [(ngModel)]="relation.telephoneNumber">
+
+      <label>Email</label>
+      <input type="text" name="eMailAddress" [(ngModel)]="relation.eMailAddress">
+
+      <label>Country</label>
+      <select name="country">
+        <option selected [(ngModel)]="relation.countryName">{{relation.countryName}}</option>
+      </select>
+
+      <label>City</label>
+      <input type="text" name="city" [(ngModel)]="relation.city">
+
+      <label>Street</label>
+      <input type="text" name="street" [(ngModel)]="relation.street">
+
+      <label>Postal Code</label>
+      <input type="text" name="postalCode" [(ngModel)]="relation.postalCode">
+
+      <label>Street Number</label>
+      <input type="text" name="streetNumber" [(ngModel)]="relation.number">
+
+      <input type="submit" value="Submit" (click)="edit(relation)">
+  </div>
+</div>

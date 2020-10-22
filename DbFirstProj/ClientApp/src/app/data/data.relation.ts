@@ -1,6 +1,7 @@
 export class Relation {
   constructor(
-    public id?: string,
+    public relationId?: string,
+    public relationAddressId?: string,
     public isDisabled?: boolean,
     public name?: string,
     public fullName?: string,
@@ -13,3 +14,4 @@ export class Relation {
     public number?: number
   ) { }
 }
+

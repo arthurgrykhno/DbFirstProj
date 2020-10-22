@@ -47,7 +47,9 @@ namespace DbFirstProj.Infrastructure.Data
 
         public void Update(RelationAddress relation)
         {
-            context.Entry(relation).State = EntityState.Modified;
+            context.RelationAddress.Update(relation);
+
+            context.SaveChanges();
         }
     }
 }
