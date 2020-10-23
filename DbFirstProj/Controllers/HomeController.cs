@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DbFirstProj.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/")]
     [ApiController]
     public class HomeController : ControllerBase
     {
@@ -76,6 +76,7 @@ namespace DbFirstProj.Controllers
 
                 _relationService.UpdateRelation(relation);
                 _relationService.UpdateAddress(relationAddress);
+                
 
                 return Ok();
             } 
@@ -91,12 +92,13 @@ namespace DbFirstProj.Controllers
             try
             {
                 var countries = _relationService.GetAllCountries();
+                var result = _mapper.Map<IEnumerable<CountryReadViewModel>>(countries);
 
-                return Ok(countries);
+                return Ok(result);
             }
-            catch
+            catch(Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
 

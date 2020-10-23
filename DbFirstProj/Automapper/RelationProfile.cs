@@ -20,21 +20,15 @@ namespace DbFirstProj.Automapper
             CreateMap<RelationReadViewModel, Relation>()
                 .ForMember(r => r.Id, opt => opt.MapFrom(b => b.RelationId));
 
-            //CreateMap<RelationReadViewModel, Relation>()
-            //    .ForMember(r => r.RelationAddresses[0].City, opt => opt.MapFrom(r => r.City))
-            //    .ForMember(r => r.RelationAddresses[0].Street, opt => opt.MapFrom(r => r.Street))
-            //    .ForMember(r => r.RelationAddresses[0].PostalCode, opt => opt.MapFrom(r => r.PostalCode))
-            //    .ForMember(r => r.RelationAddresses[0].Number, opt => opt.MapFrom(r => r.Number));
-
-
             CreateMap<Relation, RelationPostViewModel>();
+
             CreateMap<RelationAddress, RelationReadViewModel>();
+
             CreateMap<RelationReadViewModel, RelationAddress>()
-                .ForMember(r => r.Id, opt => opt.MapFrom(b => b.RelationAddressId));
-                //.ForMember(r => r.Country.Name, opt => opt.MapFrom(b => b.CountryName));
+                .ForMember(r => r.Id, opt => opt.MapFrom(b => b.RelationAddressId))
+                .ForMember(r => r.CountryId, opt => opt.MapFrom(b => b.CountryId));
 
             CreateMap<Country, CountryReadViewModel>().ReverseMap();
-            CreateMap<AddressType, AddressTypeReadViewModel>().ReverseMap();
 
         }
     }

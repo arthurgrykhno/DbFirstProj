@@ -1,29 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { PopupComponent } from './popup/popup.component';
-import { DataService } from './data/data.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RelationComponent } from './relation/relation.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PopupComponent
+    RelationComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    MatDialogModule,
-    BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [DataService, AppComponent],
-  bootstrap: [AppComponent],
-  entryComponents: [PopupComponent]
+  providers: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

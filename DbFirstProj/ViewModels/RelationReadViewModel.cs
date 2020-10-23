@@ -10,6 +10,8 @@ namespace DbFirstProj.ViewModels
 
         public Guid RelationAddressId { get; set; }
 
+        public Guid CountryId { get; set; }
+
         public bool IsDisabled { get; set; }
 
         public string Name { get; set; }

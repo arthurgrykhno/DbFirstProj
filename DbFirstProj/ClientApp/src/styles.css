@@ -1,50 +1,51 @@
-.container {
-  padding-top: 50px;
-  width: 80%;
-  margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+.grid-table
+{
+	display:table;
+}
+.thead
+{
+	display:table-header-group;
+	font-weight:bold;
+	border-bottom: 1px solid black;
+    text-align: center;
+    background-color: #f0f8ff;
+}
+.tbody
+{
+	display:table-row-group;
+}
+.tr
+{
+	display:table-row;
+	
+}
+.td
+{
+	display:table-cell;
+	padding: 10px 1px 1px 5px;
+}
+.thead div.tr div.td:last-child{
+    background-color: #fff;
+}
+i:hover{
+	cursor: pointer;
 }
 
-  .container table {
-    margin: 0 auto;
-  }
-
-td, th {
-  padding: 5px;
-  text-align: center;
+input.ng-invalid.ng-touched,select.ng-invalid.ng-touched{
+	border-color: #dc3545;
 }
 
-button {
-  font-size: 18px;
-  background-color: #252F48;
-  color: #EDB749;
+
+.elementToFadeInAndOut {
+    -webkit-animation: fadeinout 2s linear forwards;
+    animation: fadeinout 2s linear forwards;
+    opacity: 0;
 }
 
-.table-dark {
-  border-collapse: collapse;
-  background: #252F48;
+@-webkit-keyframes fadeinout {
+  50% { opacity: 1; }
 }
 
-  .table-dark th {
-    color: #EDB749;
-    border-bottom: 1px solid #37B5A5;
-  }
-
-  .table-dark td {
-    color: #CAD4D6;
-    border-bottom: 1px solid #37B5A5;
-    border-right: 1px solid #37B5A5;
-  }
-
-.table_dark tr:last-child td {
-  border-bottom: none;
-}
-
-.table_dark td:last-child {
-  border-right: none;
-}
-
-.table_dark tr:hover td {
-  text-decoration: underline;
+@keyframes fadeinout {
+  50% { opacity: 1; }
 }
