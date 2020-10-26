@@ -15,7 +15,7 @@ namespace DbFirstProj.ViewModels
 
         public string EMailAddress { get; set; }
 
-        public string CountryName { get; set; }
+        public string CountryId { get; set; }
 
         public string City { get; set; }
 

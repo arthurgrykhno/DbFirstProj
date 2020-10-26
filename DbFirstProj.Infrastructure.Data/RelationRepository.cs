@@ -10,7 +10,7 @@ namespace DbFirstProj.Infrastructure.Data
 {
     public class RelationRepository : IGenericRepository<Relation>
     {
-        private ApplicationDbContext context;
+        private readonly ApplicationDbContext context;
 
         public RelationRepository()
         {

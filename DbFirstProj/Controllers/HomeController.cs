@@ -42,28 +42,13 @@ namespace DbFirstProj.Controllers
         }
 
         [HttpPost("add")]
-        public ActionResult Add(/*RelationViewModel relationViewModel*/)
+        public ActionResult Add(RelationPostViewModel relationViewModel)
         {
-            var newRel = new RelationReadViewModel
-            {
-                //City = "Odessa",
-                //CountryName = "Ukraine",
-                //EMailAddress = "artur@gmail.com",
-                //FullName = "ARTUR G",
-                //Name = "ARTUR",
-                //Number = 168,
-                //PostalCode = "111244",
-                //Street = "Luzanovka",
-                //TelephoneNumber = "063311455994"
-            };
-
-            var relation = _mapper.Map<Relation>(newRel);
-            var address = _mapper.Map<RelationAddress>(newRel);
+            var relation = _mapper.Map<Relation>(relationViewModel);
 
             _relationService.CreateRelation(relation);
-            _relationService.CreateAddress(address);
 
-            return Ok(new List<object> { relation, address });
+            return CreatedAtAction("CreatedRelation", new { id = relation.Id }, relation);
         }
 
         [HttpPut]
