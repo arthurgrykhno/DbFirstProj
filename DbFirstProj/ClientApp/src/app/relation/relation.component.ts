@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder } from '@angular/forms';
-import { count } from 'console';
 import { CountryService } from '../shared/country.service';
 
 @Component({
