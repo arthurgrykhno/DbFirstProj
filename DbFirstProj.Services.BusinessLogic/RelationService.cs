@@ -5,58 +5,119 @@ using System.Collections.Generic;
 
 namespace DbFirstProj.Services.BusinessLogic
 {
-    public class RelationService : IGenericService<Relation>
+    public class RelationService /*: IGenericService<Relation>*/
     {
-        private RelationRepository repository;
+        private RelationRepository relationRepository;
+        private RelationAddressRepository addressRepository;
+        private CountryRepository countryRepository;
+        private AddressTypeRepository addressTypeRepository;
 
         public RelationService()
         {
-            repository = new RelationRepository();
+            relationRepository = new RelationRepository();
+            addressRepository = new RelationAddressRepository();
+            countryRepository = new CountryRepository();
+            addressTypeRepository = new AddressTypeRepository();
         }
 
-        public void Create(Relation relation)
+        public void CreateRelation(Relation relation)
         {
             if (relation == null)
             {
                 throw new ArgumentNullException(nameof(relation), "Parameter is null.");
             }
 
-            repository.Create(relation);
+            relationRepository.Create(relation);
         }
 
-        public void Delete(int id)
+        public void DeleteRelation(Guid id)
         {
-            if (id >= 0)
+            if (id == null)
             {
                 throw new ArgumentException(nameof(id), "Parameter must be greater than zero.");
             }
 
-            repository.Delete(id);
+            relationRepository.Delete(id);
         }
 
-        public Relation Get(int id)
+        public Relation GetRelation(Guid id)
         {
-            if (id >= 0)
+            if (id == null)
             {
                 throw new ArgumentException(nameof(id), "Parameter must be greater than zero.");
             }
 
-            return repository.Get(id);
+            return relationRepository.Get(id);
         }
 
-        public IEnumerable<Relation> GetAll()
+        public IEnumerable<Relation> GetAllRelations()
         {
-            return repository.GetAll();
+            return relationRepository.GetAll();
         }
 
-        public void Update(Relation relation)
+        public void UpdateRelation(Relation relation)
         {
             if (relation == null)
             {
                 throw new ArgumentNullException(nameof(relation), "Parameter is null.");
             }
 
-            repository.Update(relation);
+            relationRepository.Update(relation);
+        }
+
+        public void CreateAddress(RelationAddress relationAddress)
+        {
+            if (relationAddress == null)
+            {
+                throw new ArgumentNullException(nameof(relationAddress), "Parameter is null.");
+            }
+
+            addressRepository.Create(relationAddress);
+        }
+
+        public void DeleteAddress(Guid id)
+        {
+            if (id == null)
+            {
+                throw new ArgumentException(nameof(id), "Parameter must be greater than zero.");
+            }
+
+            relationRepository.Delete(id);
+        }
+
+        public RelationAddress GetAddress(Guid id)
+        {
+            if (id == null)
+            {
+                throw new ArgumentException(nameof(id), "Parameter must be greater than zero.");
+            }
+
+            return addressRepository.Get(id);
+        }
+
+        public IEnumerable<RelationAddress> GetAllAddresses()
+        {
+            return addressRepository.GetAll();
+        }
+
+        public void UpdateAddress(RelationAddress relationAddress)
+        {
+            if (relationAddress == null)
+            {
+                throw new ArgumentNullException(nameof(relationAddress), "Parameter is null.");
+            }
+
+            addressRepository.Update(relationAddress);
+        }
+
+        public IEnumerable<Country> GetAllCountries()
+        {
+            return countryRepository.GetAll();
+        }
+
+        public IEnumerable<AddressType> GetAllAdressTypes()
+        {
+            return addressTypeRepository.GetAll();
         }
     }
 }

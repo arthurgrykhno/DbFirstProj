@@ -1,0 +1,52 @@
+<blockquote class="blockquote text-center">
+    <h2>Relations</h2>
+</blockquote>
+
+<div class="grid-table">
+    <div class="thead">
+        <div class="tr">
+            <div class="td">Name</div>
+            <div class="td">FullName</div>
+            <div class="td">TelephoneNumber</div>
+            <div class="td">Email</div>
+            <div class="td">Country</div>
+            <div class="td">City</div>
+            <div class="td">Street</div>
+            <div class="td">PostalCode</div>
+            <div class="td">Number</div>
+        </div>
+    </div>
+
+    <div class="tbody">
+        <form class="tr" [formGroup]="fg" *ngFor="let fg of relationForms.controls">
+            <div class="td">
+                <input class="form-control" formControlName="name">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="fullName">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="telephoneNumber">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="eMailAddress">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="countryName">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="city">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="street">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="postalCode">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="number">
+            </div>
+            
+        </form>
+    </div>
+</div>

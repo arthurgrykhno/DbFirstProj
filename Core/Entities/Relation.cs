@@ -7,7 +7,20 @@ namespace DbFirstProj.Entities
     [Table("tblRelation")]
     public partial class Relation
     {
+        public Relation()
+        {
+            CreatedAt = DateTime.Now;
+            CreatedBy = "AG";
+            IsDisabled = false;
+            IsTemporary = false;
+            IsMe = false;
+            PaymentViaAutomaticDebit = false;
+            InvoiceDateGenerationOptions = 0;
+            InvoiceGroupByOptions = 0;
+        }
+
         public Guid Id { get; set; }
+        public List<RelationAddress> RelationAddresses { get; set; }
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? ModifiedAt { get; set; }

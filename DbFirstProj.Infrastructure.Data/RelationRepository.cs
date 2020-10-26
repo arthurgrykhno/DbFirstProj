@@ -10,45 +10,43 @@ namespace DbFirstProj.Infrastructure.Data
 {
     public class RelationRepository : IGenericRepository<Relation>
     {
-        private testContext context;
+        private ApplicationDbContext context;
 
         public RelationRepository()
         {
-            context = new testContext();
+            context = new ApplicationDbContext();
         }
 
         public void Create(Relation relation)
         {
-            context.Add(relation);
+            context.Relation.Add(relation);
 
             context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
-            var relation = context.TblRelation.Find(id);
-
-            if (relation != null)
-            {
-                context.TblRelation.Remove(relation);
-            }
+            var relation = context.Relation.Find(id);
+            relation.IsDisabled = true;
 
             context.SaveChanges();
         }
 
         public IEnumerable<Relation> GetAll()
         {
-            return context.TblRelation.ToList();
+            var a = context.Relation.Include(r => r.RelationAddresses).ThenInclude(e => e.Country).ToList();
+            return a;
         }
 
-        public Relation Get(int id)
+        public Relation Get(Guid id)
         {
-            return context.TblRelation.Find(id);
+            return context.Relation.Find(id);
         }
 
         public void Update(Relation relation)
         {
-            context.Entry(relation).State = EntityState.Modified;
+            context.Relation.Update(relation);
+            context.SaveChanges();
         }
     }
 }

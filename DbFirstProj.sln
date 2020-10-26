@@ -3,21 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbFirstProj", "DbFirstProj\DbFirstProj.csproj", "{77F10172-8728-42D3-9CAE-B8DEB54C0712}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbFirstProj", "DbFirstProj\DbFirstProj.csproj", "{77F10172-8728-42D3-9CAE-B8DEB54C0712}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{37A48F92-2638-45C8-8AF6-4425F04584C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbFirstProj.Domain.Core", "Core\DbFirstProj.Domain.Core.csproj", "{7C362E41-1FB8-4743-B7F3-0F1AC76DC580}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbFirstProj.Domain.Core", "Core\DbFirstProj.Domain.Core.csproj", "{7C362E41-1FB8-4743-B7F3-0F1AC76DC580}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbFirstProj.Domain.Interfaces", "DbFirstProj.Domain.Interfaces\DbFirstProj.Domain.Interfaces.csproj", "{191C8FE7-DF1E-4316-B01A-AD273483DCD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbFirstProj.Domain.Interfaces", "DbFirstProj.Domain.Interfaces\DbFirstProj.Domain.Interfaces.csproj", "{191C8FE7-DF1E-4316-B01A-AD273483DCD8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{F9FCCEA5-92B0-421D-859C-40CD83ECEF29}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{3440093A-CA53-469C-8547-4AA76EB24CA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbFirstProj.Infrastructure.Data", "DbFirstProj.Infrastructure.Data\DbFirstProj.Infrastructure.Data.csproj", "{75D359C6-ECC2-4A80-A0EA-7E994F9DF82C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbFirstProj.Infrastructure.Data", "DbFirstProj.Infrastructure.Data\DbFirstProj.Infrastructure.Data.csproj", "{75D359C6-ECC2-4A80-A0EA-7E994F9DF82C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbFirstProj.Services.BusinessLogic", "DbFirstProj.Services.BusinessLogic\DbFirstProj.Services.BusinessLogic.csproj", "{EC3CB9F1-7B9A-4628-9687-C9BC5557516E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbFirstProj.Services.BusinessLogic", "DbFirstProj.Services.BusinessLogic\DbFirstProj.Services.BusinessLogic.csproj", "{EC3CB9F1-7B9A-4628-9687-C9BC5557516E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{565E1A54-C92B-4AF9-A99C-D80FBA332543}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

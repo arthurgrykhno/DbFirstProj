@@ -1,6 +1,7 @@
 ﻿using DbFirstProj.Domain.Interfaces.Repositories;
 using DbFirstProj.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,27 +9,27 @@ namespace DbFirstProj.Infrastructure.Data
 {
     public class RelationAddressRepository : IGenericRepository<RelationAddress>
     {
-        private testContext context;
+        private ApplicationDbContext context;
 
         public RelationAddressRepository()
         {
-            context = new testContext();
+            context = new ApplicationDbContext();
         }
 
         public void Create(RelationAddress relation)
         {
-            context.Add(relation);
+            context.RelationAddress.Add(relation);
 
             context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
-            var relation = context.TblRelationAddress.Find(id);
+            var relation = context.RelationAddress.Find(id);
 
-            if (relation != null)
+            if (id != null)
             {
-                context.TblRelationAddress.Remove(relation);
+                context.RelationAddress.Remove(relation);
             }
 
             context.SaveChanges();
@@ -36,17 +37,19 @@ namespace DbFirstProj.Infrastructure.Data
 
         public IEnumerable<RelationAddress> GetAll()
         {
-            return context.TblRelationAddress.ToList();
+            return context.RelationAddress.ToList();
         }
 
-        public RelationAddress Get(int id)
+        public RelationAddress Get(Guid id)
         {
-            return context.TblRelationAddress.Find(id);
+            return context.RelationAddress.Find(id);
         }
 
         public void Update(RelationAddress relation)
         {
-            context.Entry(relation).State = EntityState.Modified;
+            context.RelationAddress.Update(relation);
+
+            context.SaveChanges();
         }
     }
 }
