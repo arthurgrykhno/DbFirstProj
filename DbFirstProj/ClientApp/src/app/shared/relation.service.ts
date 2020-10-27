@@ -25,4 +25,8 @@ export class RelationService {
   deleteRelation(id) {
     return this.http.delete(environment.apiBaseURI + '/' + id);
   }
+
+  deleteCollection(data) {
+    return this.http.delete(environment.apiBaseURI, data);
+  }
 }

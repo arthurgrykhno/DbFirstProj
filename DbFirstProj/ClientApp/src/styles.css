@@ -53,3 +53,8 @@ input.ng-invalid.ng-touched,select.ng-invalid.ng-touched{
 @keyframes fadeinout {
   50% { opacity: 1; }
 }
+
+form .td:first-child{
+	padding-left: 40px;
+	padding-top: 17px;
+}

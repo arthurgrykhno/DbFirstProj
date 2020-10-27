@@ -5,6 +5,11 @@
 <div class="grid-table">
     <div class="thead">
         <div class="tr">
+            <div class="td">
+                <button class="btn btn-light ml-1" (click)="onDeleteFromBin()">
+                    <i class="far fa-trash-alt fa-lg text-danger"></i>
+                </button>
+            </div>
             <div class="td">Name</div>
             <div class="td">FullName</div>
             <div class="td">TelephoneNumber</div>
@@ -30,6 +35,9 @@
 
     <div class="tbody">
         <form class="tr" [formGroup]="fg" *ngFor="let fg of relationForms.controls; let i=index" (submit)="recordSubmit(fg)">
+            <div class="td">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="addToBin($event, fg.get('relationId').value, i)">
+            </div>
             <div class="td" hidden>
                 <input class="form-control" formControlName="relationId">
             </div>
@@ -72,5 +80,6 @@
                 </button>
             </div>
         </form>
+        
     </div>
 </div>

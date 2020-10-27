@@ -13,6 +13,7 @@ export class RelationComponent implements OnInit {
   relationForms: FormArray = this.fb.array([]);
   countries = [];
   notification = null;
+  bin = [];
 
   constructor(private fb: FormBuilder,
     private countryService: CountryService,
@@ -96,6 +97,31 @@ export class RelationComponent implements OnInit {
           //this.showNotification('delete');
         });
     }
+  }
+
+  onDeleteFromBin() {
+    if (this.bin != null) {
+      this.bin.forEach(item => {
+        this.relationService.deleteRelation(item.relationId).subscribe(
+          res => {
+            this.relationForms.removeAt(item.i);
+            console.log("done");
+          });
+      });
+    }
+  }
+
+  addToBin(event, relationId, i) {
+    if (event.target.checked) {
+      this.bin.push({ relationId, i });
+    }
+    else {
+      let removeIndex = this.bin.findIndex(item => item.i === i);
+      if (removeIndex !== -1) {
+        this.bin.splice(removeIndex, 1);
+      }
+    }
+    console.log(this.bin);
   }
 
   // showNotification(category) {
