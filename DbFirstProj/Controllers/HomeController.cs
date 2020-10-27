@@ -45,10 +45,13 @@ namespace DbFirstProj.Controllers
         public ActionResult Add(RelationPostViewModel relationViewModel)
         {
             var relation = _mapper.Map<Relation>(relationViewModel);
+            var address = _mapper.Map<RelationAddress>(relationViewModel);
+
+            relation.RelationAddresses.Add(address);
 
             _relationService.CreateRelation(relation);
 
-            return CreatedAtAction("CreatedRelation", new { id = relation.Id }, relation);
+            return Ok();
         }
 
         [HttpPut]

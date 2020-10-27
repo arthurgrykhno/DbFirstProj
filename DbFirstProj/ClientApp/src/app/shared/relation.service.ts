@@ -17,4 +17,12 @@ export class RelationService {
   getRelations() {
     return this.http.get(environment.apiBaseURI + '/relations');
   }
+
+  putRelation(formData) {
+    return this.http.put(environment.apiBaseURI, formData);
+  }
+
+  deleteRelation(id) {
+    return this.http.delete(environment.apiBaseURI + '/' + id);
+  }
 }

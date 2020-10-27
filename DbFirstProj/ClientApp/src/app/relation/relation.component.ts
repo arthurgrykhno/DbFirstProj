@@ -12,6 +12,7 @@ export class RelationComponent implements OnInit {
 
   relationForms: FormArray = this.fb.array([]);
   countries = [];
+  notification = null;
 
   constructor(private fb: FormBuilder,
     private countryService: CountryService,
@@ -69,10 +70,52 @@ export class RelationComponent implements OnInit {
   }
 
   recordSubmit(fg: FormGroup) {
-    this.relationService.postRelation(fg.value).subscribe(
-      (res: any) => {
-        fg.patchValue({ relationId: res.relationId });
-      }
-    )
+    if (fg.value.relationId == '') {
+      this.relationService.postRelation(fg.value).subscribe(
+        (res: any) => {
+          fg.patchValue({ relationId: res.relationId });
+          //this.showNotification('insert');
+        });
+    }
+    else {
+      this.relationService.putRelation(fg.value).subscribe(
+        (res: any) => {
+          //this.showNotification('update');
+        });
+    }
   }
+
+  onDelete(relationId, i) {
+    if (relationId == '') {
+      this.relationForms.removeAt(i);
+    }
+    else if (confirm('Are you sure?')) {
+      this.relationService.deleteRelation(relationId).subscribe(
+        res => {
+          this.relationForms.removeAt(i);
+          //this.showNotification('delete');
+        });
+    }
+  }
+
+  // showNotification(category) {
+  //   switch (category) {
+  //     case 'insert':
+  //       this.notification = { class: 'text-success', message: 'saved!' };
+  //       break;
+  //     case 'update':
+  //       this.notification = { class: 'text-primary', message: 'updated!' };
+  //       break;
+  //     case 'delete':
+  //       this.notification = { class: 'text-danger', message: 'deleted!' };
+  //       break;
+
+  //     default:
+  //       break;
+  //   }
+
+  //   setTimeout(() => {
+  //     this.notification = null;
+  //   }, 1000);
+  // }
 }

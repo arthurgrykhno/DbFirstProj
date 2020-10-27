@@ -23,18 +23,18 @@ namespace DbFirstProj.Automapper
 
             CreateMap<Relation, RelationPostViewModel>().ReverseMap();
 
-            //CreateMap<RelationPostViewModel, Relation>()
-            //    .ForPath(r => r.RelationAddresses[0].CountryId, opt => opt.MapFrom(b => b.CountryId))
-            //    .ForPath(r => r.RelationAddresses[0].City, opt => opt.MapFrom(b => b.City))
-            //    .ForPath(r => r.RelationAddresses[0].Street, opt => opt.MapFrom(b => b.Street))
-            //    .ForPath(r => r.RelationAddresses[0].PostalCode, opt => opt.MapFrom(b => b.PostalCode))
-            //    .ForPath(r => r.RelationAddresses[0].Number, opt => opt.MapFrom(b => b.Number));
+            CreateMap<RelationAddress, RelationPostViewModel>().ReverseMap();
 
             CreateMap<RelationAddress, RelationReadViewModel>();
 
             CreateMap<RelationReadViewModel, RelationAddress>()
                 .ForMember(r => r.Id, opt => opt.MapFrom(b => b.RelationAddressId))
-                .ForMember(r => r.CountryId, opt => opt.MapFrom(b => b.CountryId));
+                .ForMember(r => r.CountryId, opt => opt.MapFrom(b => b.CountryId))
+                .ForMember(r => r.RelationId, opt => opt.MapFrom(b => b.RelationId))
+                .ForMember(r => r.City, opt => opt.MapFrom(b => b.City))
+                .ForMember(r => r.Street, opt => opt.MapFrom(b => b.Street))
+                .ForMember(r => r.PostalCode, opt => opt.MapFrom(b => b.PostalCode))
+                .ForMember(r => r.Number, opt => opt.MapFrom(b => b.Number));
 
             CreateMap<Country, CountryReadViewModel>()
                 .ForMember(c => c.CountryId, opt => opt.MapFrom(b => b.Id))

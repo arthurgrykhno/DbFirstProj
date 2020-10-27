@@ -40,7 +40,6 @@ input.ng-invalid.ng-touched,select.ng-invalid.ng-touched{
 	border-color: #dc3545;
 }
 
-
 .elementToFadeInAndOut {
     -webkit-animation: fadeinout 2s linear forwards;
     animation: fadeinout 2s linear forwards;

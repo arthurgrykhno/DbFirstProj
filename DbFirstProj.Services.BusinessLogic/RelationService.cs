@@ -52,7 +52,9 @@ namespace DbFirstProj.Services.BusinessLogic
 
         public IEnumerable<Relation> GetAllRelations()
         {
-            return relationRepository.GetAll();
+            List<Relation> relations = (List<Relation>)relationRepository.GetAll();
+            var result = relations.FindAll(r => r.IsDisabled == false);
+            return result;
         }
 
         public void UpdateRelation(Relation relation)

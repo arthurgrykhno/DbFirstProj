@@ -17,6 +17,7 @@ namespace DbFirstProj.Entities
             PaymentViaAutomaticDebit = false;
             InvoiceDateGenerationOptions = 0;
             InvoiceGroupByOptions = 0;
+            RelationAddresses = new List<RelationAddress>();
         }
 
         public Guid Id { get; set; }
