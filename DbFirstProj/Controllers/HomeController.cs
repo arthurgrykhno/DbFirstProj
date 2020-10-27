@@ -120,29 +120,6 @@ namespace DbFirstProj.Controllers
             }
         }
 
-        //[HttpDelete("{data}")]
-        //public IActionResult DeleteRelationCollection(string[] data)
-        //{
-        //    try
-        //    {
-        //        if (data.Length != 0)
-        //        {
-        //            foreach (var item in data)
-        //            {
-        //                var guidId = Guid.Parse(item);
-        //                _relationService.DeleteRelation(guidId);
-        //            }
-        //        }
-
-        //        return Ok();
-        //    }
-        //    catch
-        //    {
-        //        return BadRequest();
-        //    }
-            
-        //}
-
         [HttpGet("{id}")]
         public IActionResult GetRelation(string id)
         {
