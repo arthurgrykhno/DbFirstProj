@@ -23,10 +23,18 @@ export class RelationService {
   }
 
   deleteRelation(id) {
-    return this.http.delete(environment.apiBaseURI + '/' + id);
+    return this.http.put(environment.apiBaseURI + '/' + id, id);
   }
 
   deleteCollection(data) {
-    return this.http.delete(environment.apiBaseURI, data);
+    return this.http.put(environment.apiBaseURI + '/deleteCollection', data);
+  }
+
+  getRelationsWithSorting(category, type) {
+    return this.http.get(environment.apiBaseURI + '/relations/' + category + '/' + type);
+  }
+
+  getRelationsWithFilter(filterId) {
+    return this.http.get(environment.apiBaseURI + '/relations/' + filterId);
   }
 }

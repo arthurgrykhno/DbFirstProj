@@ -7,47 +7,47 @@ using System.Linq;
 
 namespace DbFirstProj.Infrastructure.Data
 {
-    public class CountryRepository : IGenericRepository<Country>
+    public class CategoryRepository : IGenericRepository<Category>
     {
         private readonly ApplicationDbContext context;
 
-        public CountryRepository()
+        public CategoryRepository()
         {
             context = new ApplicationDbContext();
         }
 
-        public void Create(Country country)
+        public void Create(Category category)
         {
-            context.Country.Add(country);
+            context.Category.Add(category);
 
             context.SaveChanges();
         }
 
         public void Delete(Guid id)
         {
-            var country = context.Country.Find(id);
+            var category = context.Category.Find(id);
 
             if (id != null)
             {
-                context.Country.Remove(country);
+                context.Category.Remove(category);
             }
 
             context.SaveChanges();
         }
 
-        public Country Get(Guid id)
+        public Category Get(Guid id)
         {
-            return context.Country.Find(id);
+            return context.Category.Find(id);
         }
 
-        public IEnumerable<Country> GetAll(string sortingCondition = "", bool isDesc = false)
+        public IEnumerable<Category> GetAll(string sortingCondition = "", bool isDesc = false)
         {
-            return context.Country.ToList();
+            return context.Category.ToList();
         }
-            
-        public void Update(Country country)
+
+        public void Update(Category category)
         {
-            context.Entry(country).State = EntityState.Modified;
+            context.Entry(category).State = EntityState.Modified;
         }
     }
 }

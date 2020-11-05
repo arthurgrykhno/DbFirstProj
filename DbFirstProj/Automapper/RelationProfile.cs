@@ -42,6 +42,10 @@ namespace DbFirstProj.Automapper
                 .ForMember(c => c.PostalCodeFormat, opt => opt.MapFrom(b => b.PostalCodeFormat))
                 .ReverseMap();
 
+            CreateMap<Category, CategoryReadViewModel>()
+                .ForMember(c => c.CategoryId, opt => opt.MapFrom(b => b.Id))
+                .ForMember(c => c.CategoryName, opt => opt.MapFrom(b => b.Name))
+                .ReverseMap();
         }
     }
 }

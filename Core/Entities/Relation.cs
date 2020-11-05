@@ -18,10 +18,12 @@ namespace DbFirstProj.Entities
             InvoiceDateGenerationOptions = 0;
             InvoiceGroupByOptions = 0;
             RelationAddresses = new List<RelationAddress>();
+            //RelationCategories = new List<RelationCategory>();
         }
 
         public Guid Id { get; set; }
         public List<RelationAddress> RelationAddresses { get; set; }
+        public List<RelationCategory> RelationCategories { get; set; }
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? ModifiedAt { get; set; }

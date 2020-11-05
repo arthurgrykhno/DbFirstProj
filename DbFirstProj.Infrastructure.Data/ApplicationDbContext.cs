@@ -410,7 +410,11 @@ namespace DbFirstProj.Entities
 
             modelBuilder.Entity<RelationCategory>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.CategoryId, e.RelationId });
+
+                entity.HasOne(e => e.Relation).WithMany(r => r.RelationCategories).HasForeignKey(b => b.RelationId);
+
+                entity.HasOne(e => e.Category).WithMany(r => r.RelationCategories).HasForeignKey(b => b.CategoryId);
 
                 entity.ToTable("tblRelationCategory");
             });

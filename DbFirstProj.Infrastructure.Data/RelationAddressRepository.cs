@@ -9,7 +9,7 @@ namespace DbFirstProj.Infrastructure.Data
 {
     public class RelationAddressRepository : IGenericRepository<RelationAddress>
     {
-        private ApplicationDbContext context;
+        private readonly ApplicationDbContext context;
 
         public RelationAddressRepository()
         {
@@ -35,7 +35,7 @@ namespace DbFirstProj.Infrastructure.Data
             context.SaveChanges();
         }
 
-        public IEnumerable<RelationAddress> GetAll()
+        public IEnumerable<RelationAddress> GetAll(string sortingCondition = "", bool isDesc = false)
         {
             return context.RelationAddress.ToList();
         }
