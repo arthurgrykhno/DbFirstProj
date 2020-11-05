@@ -8,6 +8,7 @@ namespace DbFirstProj.Entities
     public partial class Category
     {
         public Guid Id { get; set; }
+        public List<RelationCategory> RelationCategories { get; set; }
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? ModifiedAt { get; set; }

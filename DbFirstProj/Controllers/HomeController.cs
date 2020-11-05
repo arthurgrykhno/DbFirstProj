@@ -25,7 +25,7 @@ namespace DbFirstProj.Controllers
         }
 
         [HttpGet("relations")]
-        public ActionResult<IEnumerable<RelationReadViewModel>> GetAllData()
+        public ActionResult<IEnumerable<RelationReadViewModel>> GetRelations()
         {
             try
             {
@@ -38,32 +38,27 @@ namespace DbFirstProj.Controllers
             {
                 return BadRequest(ex.Message);
             }
-
         }
 
         [HttpPost("add")]
-        public ActionResult Add(/*RelationViewModel relationViewModel*/)
+        public ActionResult Add(RelationPostViewModel relationViewModel)
         {
-            var newRel = new RelationReadViewModel
+            try
             {
-                //City = "Odessa",
-                //CountryName = "Ukraine",
-                //EMailAddress = "artur@gmail.com",
-                //FullName = "ARTUR G",
-                //Name = "ARTUR",
-                //Number = 168,
-                //PostalCode = "111244",
-                //Street = "Luzanovka",
-                //TelephoneNumber = "063311455994"
-            };
+                var relation = _mapper.Map<Relation>(relationViewModel);
+                var address = _mapper.Map<RelationAddress>(relationViewModel);
 
-            var relation = _mapper.Map<Relation>(newRel);
-            var address = _mapper.Map<RelationAddress>(newRel);
+                relation.RelationAddresses.Add(address);
 
-            _relationService.CreateRelation(relation);
-            _relationService.CreateAddress(address);
+                _relationService.CreateRelation(relation);
 
-            return Ok(new List<object> { relation, address });
+                return Ok(relation);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
 
         [HttpPut]
@@ -74,12 +69,12 @@ namespace DbFirstProj.Controllers
                 var relation = _mapper.Map<Relation>(editRelation);
                 var relationAddress = _mapper.Map<RelationAddress>(editRelation);
 
+                relation.RelationAddresses.Add(relationAddress);
+
                 _relationService.UpdateRelation(relation);
-                _relationService.UpdateAddress(relationAddress);
-                
 
                 return Ok();
-            } 
+            }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
@@ -87,7 +82,7 @@ namespace DbFirstProj.Controllers
         }
 
         [HttpGet("countries")]
-        public ActionResult GetCountries()
+        public ActionResult<IEnumerable<CountryReadViewModel>> GetCountries()
         {
             try
             {
@@ -96,7 +91,7 @@ namespace DbFirstProj.Controllers
 
                 return Ok(result);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -111,40 +106,94 @@ namespace DbFirstProj.Controllers
 
                 return Ok(types);
             }
-            catch
+            catch(Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
-
-        [HttpDelete("{id}")]
-        public IActionResult DeleteRelation(string id)
+            
+        [HttpPut("{id}")]
+        public ActionResult DeleteRelation(string id)
         {
             try
             {
                 var guidId = Guid.Parse(id);
                 _relationService.DeleteRelation(guidId);
+
                 return Ok();
             }
-            catch
+            catch(Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetRelation(string id)
+        [HttpPut("deleteCollection")]
+        public ActionResult DeleteCollection(string[] relations)
         {
             try
             {
-                var guidId = Guid.Parse(id);
-                var relation = _relationService.GetRelation(guidId);
+                _relationService.DeleteCollection(relations);
 
-                return Ok(_mapper.Map<RelationReadViewModel>(relation));
+                return Ok();
             }
-            catch
+            catch(Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("relations/{category}/{isDesc}")]
+        public ActionResult GetSortedRellations(string category, bool isDesc)
+        {
+            try
+            {
+                var all = _relationService.GetSortedRelations(category, isDesc);
+                var result = _mapper.Map<IEnumerable<RelationReadViewModel>>(all);
+
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("categories")]
+        public ActionResult<IEnumerable<CategoryReadViewModel>> GetCategories()
+        {
+            try
+            {
+                var all = _relationService.GetAllCategories();
+                var result = _mapper.Map<IEnumerable<CategoryReadViewModel>>(all);
+
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("relations/{filterId}")]
+        public ActionResult<IEnumerable<RelationReadViewModel>> GetFiltredRelations(string filterId)
+        {
+            try
+            {
+                if (filterId == "0")
+                {
+                    return RedirectToAction("GetRelations");
+                }
+
+                var guid = Guid.Parse(filterId);
+                var all =_relationService.GetFiltredRelations(guid);
+                var result = _mapper.Map<IEnumerable<RelationReadViewModel>>(all);
+
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

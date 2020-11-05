@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DbFirstProj.ViewModels
+﻿namespace DbFirstProj.ViewModels
 {
     public class RelationPostViewModel
     {
@@ -15,7 +10,7 @@ namespace DbFirstProj.ViewModels
 
         public string EMailAddress { get; set; }
 
-        public string CountryName { get; set; }
+        public string CountryId { get; set; }
 
         public string City { get; set; }
 
