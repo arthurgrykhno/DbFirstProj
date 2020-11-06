@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DbFirstProj.Entities;
+using System;
+using System.Collections.Generic;
 
 namespace DbFirstProj.ViewModels
 {

@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace DbFirstProj.Infrastructure.Data
 {
     public class AddressTypeRepository : IGenericRepository<AddressType>
     {
-        private readonly ApplicationDbContext context;
+        private ApplicationDbContext context;
 
         public AddressTypeRepository()
         {
@@ -40,7 +41,7 @@ namespace DbFirstProj.Infrastructure.Data
             return context.AddressType.Find(id);
         }
 
-        public IEnumerable<AddressType> GetAll(string sortingCondition = "", bool isDesc = false)
+        public IEnumerable<AddressType> GetAll()
         {
             return context.AddressType.ToList();
         }
