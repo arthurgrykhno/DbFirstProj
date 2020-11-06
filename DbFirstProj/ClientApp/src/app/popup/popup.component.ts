@@ -19,14 +19,18 @@ export class PopupComponent implements OnInit {
     relationId: new FormControl(''),
     name: new FormControl('', [Validators.required]),
     fullName: new FormControl('', [Validators.required]),
-    telephoneNumber: new FormControl('', [Validators.required]),
-    eMailAddress: new FormControl('', [Validators.required]),
+    telephoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]{10}")]),
+    eMailAddress: new FormControl('', [Validators.email]),
     countryId: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     street: new FormControl('', [Validators.required]),
     postalCode: new FormControl('', [Validators.required]),
-    number: new FormControl('', [Validators.required])
+    number: new FormControl('', [Validators.minLength(1), Validators.maxLength(7)])
   });
+
+  numberValidation(input) {
+    console.log((/[a-z]/.test(input.value.toLowerCase())))
+  }
 
   countries = [];
 
@@ -36,6 +40,6 @@ export class PopupComponent implements OnInit {
 
   recordSubmit(form: FormGroup) {
     this.relationComponent.recordSubmit(form);
-    
+
   }
 }

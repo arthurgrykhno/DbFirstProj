@@ -53,16 +53,16 @@ export class RelationComponent implements OnInit {
         else {
           (res as []).forEach((relation: any) => {
             this.relationForms.push(this.fb.group({
-              relationId: [relation.relationId], //!!!!!
-              relationAddressId: [relation.relationAddressId], //!!!!!!
-              countryId: [relation.countryId], //!!!!!
-              isDisabled: [false], //!!!!!!
+              relationId: [relation.relationId],
+              relationAddressId: [relation.relationAddressId],
+              countryId: [relation.countryId],
+              isDisabled: [false],
               categoryId: [],
 
               name: [relation.name, Validators.required],
               fullName: [relation.fullName, Validators.required],
-              telephoneNumber: [relation.telephoneNumber, Validators.required],
-              eMailAddress: [relation.eMailAddress, Validators.required],
+              telephoneNumber: [relation.telephoneNumber, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+              eMailAddress: [relation.eMailAddress, Validators.email],
               countryName: [relation.countryName],
               city: [relation.city, Validators.required],
               street: [relation.street, Validators.required],
@@ -76,15 +76,15 @@ export class RelationComponent implements OnInit {
 
   addRelationForm() {
     this.relationForms.push(this.fb.group({
-      relationId: [''], //!!!!!
-      relationAddressId: [''], //!!!!!!
-      countryId: [''], //!!!!!
-      isDisabled: [false], //!!!!!!
+      relationId: [''],
+      relationAddressId: [''],
+      countryId: [''],
+      isDisabled: [false],
 
       name: ['', Validators.required],
       fullName: ['', Validators.required],
       telephoneNumber: ['', Validators.required],
-      eMailAddress: ['', Validators.required],
+      eMailAddress: ['', Validators.email],
       countryName: [''],
       city: ['', Validators.required],
       street: ['', Validators.required],
@@ -165,10 +165,10 @@ export class RelationComponent implements OnInit {
         }
         (res as []).forEach((relation: any) => {
           this.relationForms.push(this.fb.group({
-            relationId: [relation.relationId], //!!!!!
-            relationAddressId: [relation.relationAddressId], //!!!!!!
-            countryId: [relation.countryId], //!!!!!
-            isDisabled: [false], //!!!!!!
+            relationId: [relation.relationId],
+            relationAddressId: [relation.relationAddressId],
+            countryId: [relation.countryId],
+            isDisabled: [false],
 
             name: [relation.name, Validators.required],
             fullName: [relation.fullName, Validators.required],
@@ -193,10 +193,10 @@ export class RelationComponent implements OnInit {
         }
         (res as []).forEach((relation: any) => {
           this.relationForms.push(this.fb.group({
-            relationId: [relation.relationId], //!!!!!
-            relationAddressId: [relation.relationAddressId], //!!!!!!
-            countryId: [relation.countryId], //!!!!!
-            isDisabled: [false], //!!!!!!
+            relationId: [relation.relationId],
+            relationAddressId: [relation.relationAddressId],
+            countryId: [relation.countryId],
+            isDisabled: [false],
 
             name: [relation.name, Validators.required],
             fullName: [relation.fullName, Validators.required],
