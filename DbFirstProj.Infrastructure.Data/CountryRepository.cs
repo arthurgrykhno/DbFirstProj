@@ -9,7 +9,7 @@ namespace DbFirstProj.Infrastructure.Data
 {
     public class CountryRepository : IGenericRepository<Country>
     {
-        private readonly ApplicationDbContext context;
+        private ApplicationDbContext context;
 
         public CountryRepository()
         {
@@ -40,7 +40,7 @@ namespace DbFirstProj.Infrastructure.Data
             return context.Country.Find(id);
         }
 
-        public IEnumerable<Country> GetAll(string sortingCondition = "", bool isDesc = false)
+        public IEnumerable<Country> GetAll()
         {
             return context.Country.ToList();
         }

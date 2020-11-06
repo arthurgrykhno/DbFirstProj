@@ -4,13 +4,13 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using DbFirstProj.Infrastructure.Data.Classes;
+using System.Text;
 
 namespace DbFirstProj.Infrastructure.Data
 {
     public class RelationRepository : IGenericRepository<Relation>
     {
-        private readonly ApplicationDbContext context;
+        private ApplicationDbContext context;
 
         public RelationRepository()
         {
@@ -19,8 +19,6 @@ namespace DbFirstProj.Infrastructure.Data
 
         public void Create(Relation relation)
         {
-            relation.RelationAddresses[0].PostalCode = CodeParser.ChangeCode(relation, context);
-
             context.Relation.Add(relation);
 
             context.SaveChanges();
@@ -28,37 +26,16 @@ namespace DbFirstProj.Infrastructure.Data
 
         public void Delete(Guid id)
         {
-            using (var context = new ApplicationDbContext())
-            {
-                var entity = context.Relation.FirstOrDefault(item => item.Id == id);
+            var relation = context.Relation.Find(id);
+            relation.IsDisabled = true;
 
-                if (entity != null)
-                {
-                    entity.IsDisabled = true;
-                    //context.Relation.Update(entity);
-
-                    context.SaveChanges();
-                }
-            }
+            context.SaveChanges();
         }
 
-        public IEnumerable<Relation> GetAll(string sortingCondition = "", bool isDesc = false)
+        public IEnumerable<Relation> GetAll()
         {
-            Func<Relation, string> keySelector = this.GetSortingCondition(sortingCondition);
-
-            var all = context.Relation.Include(r => r.RelationAddresses).ThenInclude(e => e.Country);
-
-            var result = isDesc ? all.OrderByDescending(keySelector) : all.OrderBy(keySelector);
-
-            return result.ToList();
-        }
-
-        public IEnumerable<Relation> GetFiltredRelations(Guid id)
-        {
-            var all = context.Relation.Include(r => r.RelationCategories).Include(r => r.RelationAddresses).ThenInclude(e => e.Country)
-                .Where(r => r.RelationCategories.Any(r => r.CategoryId == id));
-
-            return all.ToList();
+            var a = context.Relation.Include(r => r.RelationAddresses).ThenInclude(e => e.Country).ToList();
+            return a;
         }
 
         public Relation Get(Guid id)
@@ -68,30 +45,8 @@ namespace DbFirstProj.Infrastructure.Data
 
         public void Update(Relation relation)
         {
-            relation.RelationAddresses[0].PostalCode = CodeParser.ChangeCode(relation, context);
             context.Relation.Update(relation);
-
             context.SaveChanges();
-        }
-
-        private Func<Relation, string> GetSortingCondition(string sortingCondition)
-        {
-            Func<Relation, string> keySelector = r => r.Name;
-
-            keySelector = sortingCondition switch
-            {
-                "name" => r => r.Name,
-                "fullname" => r => r.FullName,
-                "telephoneNumber" => r => r.TelephoneNumber,
-                "eMailAddress" => r => r.EmailAddress,
-                "country" => r => r.RelationAddresses[0].Country.Name,
-                "city" => r => r.RelationAddresses[0].City,
-                "street" => r => r.RelationAddresses[0].Street,
-                "postalCode" => r => r.RelationAddresses[0].PostalCode,
-                "number" => r => r.RelationAddresses[0].Number.ToString(),
-                _ => r => r.Name,
-            };
-            return keySelector;
         }
     }
 }
