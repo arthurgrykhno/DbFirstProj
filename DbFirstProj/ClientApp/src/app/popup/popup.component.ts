@@ -20,12 +20,12 @@ export class PopupComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     fullName: new FormControl('', [Validators.required]),
     telephoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]{10}")]),
-    eMailAddress: new FormControl('', [Validators.email]),
+    eMailAddress: new FormControl('', [Validators.email, Validators.required]),
     countryId: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     street: new FormControl('', [Validators.required]),
     postalCode: new FormControl('', [Validators.required]),
-    number: new FormControl('', [Validators.minLength(1), Validators.maxLength(7)])
+    number: new FormControl('', [Validators.minLength(1), Validators.maxLength(7), Validators.required])
   });
 
   numberValidation(input) {
